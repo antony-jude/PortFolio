@@ -36,7 +36,6 @@ End-to-end railway component traceability solution with AI-driven QR code markin
 **Backend:**
 - Node.js
 - Express.js
-- Nodemailer
 
 **Security & Tools:**
 - Python
