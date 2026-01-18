@@ -9,10 +9,10 @@ export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
+  const [delta, setDelta] = useState(150 - Math.random() * 50);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
-  const period = 2000;
+  const toRotate = [ "Cybersecurity Student", "Web Designer", "Security Researcher", "Ethical Hacker", "Full Stack Developer" ];
+  const period = 1000;
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -30,7 +30,7 @@ export const Banner = () => {
     setText(updatedText);
 
     if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
+      setDelta(prevDelta => prevDelta / 1.5);
     }
 
     if (!isDeleting && updatedText === fullText) {
@@ -41,7 +41,7 @@ export const Banner = () => {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
       setIndex(1);
-      setDelta(500);
+      setDelta(300);
     } else {
       setIndex(prevIndex => prevIndex + 1);
     }
@@ -54,7 +54,7 @@ export const Banner = () => {
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+              <div className={isVisible ? "animate__animated animate__fadeInDown animate__faster" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
                 <h1>{`Hi! I'm Antony Jude`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Cybersecurity Enthusiast", "Security Researcher", "B.E CSE Student" ,"Ethical Hacker" ]'><span className="wrap">{text}</span></span></h1>
                   <p>I'm a passionate B.E CSE (Cybersecurity) student with strong fundamentals in network security, cryptography, and ethical hacking. I'm dedicated to building secure systems, analyzing vulnerabilities, and contributing to cybersecurity innovation. I'm eager to apply my technical knowledge to solve real-world security challenges and protect digital infrastructure.</p>

@@ -35,18 +35,18 @@ export const Skills = () => {
                 <div className="col-12">
                     <div className="skill-bx wow zoomIn">
                         <h2>Skills</h2>
-                        <p>Cybersecurity Student | Secure Coding | Network Security | Vulnerability Assessment | Full-Stack Development</p>
+                        <p>Specializing in cybersecurity with expertise in secure coding, network security, and vulnerability assessment. I combine programming proficiency with security principles to develop robust, defensible systems and solutions.</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                             <div className="item">
-                                <img src={meter3} alt="Image" />
+                                <img src={meter1} alt="Image" />
                                 <h5>Cybersecurity</h5>
                             </div>
                             <div className="item">
-                                <img src={meter3} alt="Image" />
+                                <img src={meter2} alt="Image" />
                                 <h5>Network Security</h5>
                             </div>
                             <div className="item">
-                                <img src={meter2} alt="Image" />
+                                <img src={meter3} alt="Image" />
                                 <h5>Cryptography</h5>
                             </div>
                             <div className="item">
@@ -54,8 +54,12 @@ export const Skills = () => {
                                 <h5>Python</h5>
                             </div>
                             <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>C</h5>
+                                <img src={meter2} alt="Image" />
+                                <h5>JavaScript/React</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter3} alt="Image" />
+                                <h5>Node.js/Express</h5>
                             </div>
                             <div className="item">
                                 <img src={meter1} alt="Image" />
@@ -63,11 +67,7 @@ export const Skills = () => {
                             </div>
                             <div className="item">
                                 <img src={meter2} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>React.js</h5>
+                                <h5>C</h5>
                             </div>
                         </Carousel>
                     </div>
