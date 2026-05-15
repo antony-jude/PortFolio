@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me | Antony Jude R</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="contact-page">
     <!-- Background Elements -->
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
-    
+
     <!-- Custom Cursor -->
     <div class="cursor-glow" id="contact-cursor"></div>
 
@@ -37,8 +41,9 @@
             <!-- Left Side: Info -->
             <div class="contact-info-side reveal active">
                 <h1 class="contact-title">Let's <span class="highlight">Connect</span></h1>
-                <p class="contact-subtitle">I'm currently open to new opportunities and collaborations. Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!</p>
-                
+                <p class="contact-subtitle">I'm currently open to new opportunities and collaborations. Whether you have
+                    a question, a project idea, or just want to say hi, I'll try my best to get back to you!</p>
+
                 <div class="contact-details mt-4">
                     <div class="detail-item">
                         <div class="detail-icon"><i class="fas fa-envelope"></i></div>
@@ -64,24 +69,26 @@
                 </div>
 
                 <div class="social-links mt-4" style="margin-top: 2rem;">
-                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/antony-jude" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/antony-jude" target="_blank" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
                 </div>
             </div>
 
             <!-- Right Side: Form -->
             <div class="contact-form-side glass-panel reveal active" style="transition-delay: 0.2s">
-                <form class="contact-form" action="https://formsubmit.co/antonyjuder@gmail.com" method="POST">
-                    <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_subject" value="New message from Portfolio Contact Form!">
-                    <input type="hidden" name="_captcha" value="false">
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Configuration -->
+                    <input type="hidden" name="access_key" value="5860c9a2-7800-4fd0-ad60-63c2c495ded4">
+                    <input type="hidden" name="subject" value="New Message from Portfolio Contact Form!">
                     <div class="form-group">
                         <div class="input-wrapper">
                             <i class="fas fa-user"></i>
                             <input type="text" id="name" name="name" required placeholder="Full Name">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <div class="input-wrapper">
                             <i class="fas fa-phone-alt"></i>
@@ -99,11 +106,13 @@
                     <div class="form-group">
                         <div class="input-wrapper">
                             <i class="fas fa-comment-dots"></i>
-                            <textarea id="message" name="message" rows="4" required placeholder="Your Message..."></textarea>
+                            <textarea id="message" name="message" rows="4" required
+                                placeholder="Your Message..."></textarea>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem;">
+                    <button type="submit" class="btn btn-primary"
+                        style="width: 100%; margin-top: 1rem; font-size: 1.1rem;">
                         Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
                     </button>
                 </form>
@@ -130,4 +139,5 @@
         });
     </script>
 </body>
+
 </html>
