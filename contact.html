@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Antony Jude R</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page">
+    <!-- Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor-glow" id="contact-cursor"></div>
+
+    <!-- Navigation -->
+    <header style="background: transparent; border: none; box-shadow: none;">
+        <nav class="container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; font-size: 1.2rem;">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
+
+    <section class="contact-section hero">
+        <div class="container contact-split">
+            <!-- Left Side: Info -->
+            <div class="contact-info-side reveal active">
+                <h1 class="contact-title">Let's <span class="highlight">Connect</span></h1>
+                <p class="contact-subtitle">I'm currently open to new opportunities and collaborations. Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!</p>
+                
+                <div class="contact-details mt-4">
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email Me</h4>
+                            <p>antonyjuder@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h4>Call Me</h4>
+                            <p>+91 6382006144</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Chennai, India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links mt-4" style="margin-top: 2rem;">
+                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/antony-jude" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="contact-form-side glass-panel reveal active" style="transition-delay: 0.2s">
+                <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!'); window.location.href='index.html';">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" name="name" required placeholder="Full Name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone-alt"></i>
+                            <input type="tel" id="phone" name="phone" required placeholder="Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-comment-dots"></i>
+                            <textarea id="message" name="message" rows="4" required placeholder="Your Message..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem;">
+                        Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Copy cursor logic for this page specifically since it's a separate file
+        const contactCursor = document.getElementById('contact-cursor');
+        document.addEventListener('mousemove', (e) => {
+            contactCursor.style.left = e.clientX + 'px';
+            contactCursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mousedown', () => {
+            contactCursor.style.width = '350px';
+            contactCursor.style.height = '350px';
+            contactCursor.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%)';
+        });
+        document.addEventListener('mouseup', () => {
+            contactCursor.style.width = '400px';
+            contactCursor.style.height = '400px';
+            contactCursor.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(0,0,0,0) 70%)';
+        });
+    </script>
+</body>
+</html>
