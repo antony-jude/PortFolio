@@ -3,7 +3,7 @@
 A modern, responsive, and beautifully designed personal portfolio website built to showcase my skills, projects, and experience as an aspiring Ethical Hacker and Software Developer.
 
 ## 🚀 Live Demo
-[View Live Portfolio](https://antony-jude.github.io/PortFolio/) *(If you have enabled GitHub Pages!)*
+[View Live Portfolio](https://antos-portfolio.netlify.app/) *(If you have enabled GitHub Pages!)*
 
 ## ✨ Features
 - **Premium Glassmorphism Design:** Modern aesthetic with a dark theme, glowing accents, and transparent glass-like panels.
