@@ -71,7 +71,11 @@
 
             <!-- Right Side: Form -->
             <div class="contact-form-side glass-panel reveal active" style="transition-delay: 0.2s">
-                <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!'); window.location.href='index.html';">
+                <form class="contact-form" action="https://formsubmit.co/antonyjuder@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New message from Portfolio Contact Form!">
+                    <input type="hidden" name="_next" value="https://antony-jude.github.io/PortFolio/">
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
                         <div class="input-wrapper">
                             <i class="fas fa-user"></i>
