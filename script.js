@@ -3,27 +3,32 @@ const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 const mobileMenuIcon = document.querySelector('.mobile-menu-btn i');
 
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    
-    // Change icon
-    if (navLinks.classList.contains('active')) {
-        mobileMenuIcon.classList.remove('fa-bars');
-        mobileMenuIcon.classList.add('fa-times');
-    } else {
-        mobileMenuIcon.classList.remove('fa-times');
-        mobileMenuIcon.classList.add('fa-bars');
-    }
-});
+if (mobileMenuBtn && navLinks && mobileMenuIcon) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        
+        // Change icon
+        if (navLinks.classList.contains('active')) {
+            mobileMenuIcon.classList.remove('fa-bars');
+            mobileMenuIcon.classList.add('fa-times');
+        } else {
+            mobileMenuIcon.classList.remove('fa-times');
+            mobileMenuIcon.classList.add('fa-bars');
+        }
+    });
+}
 
 // Close mobile menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuIcon.classList.remove('fa-times');
-        mobileMenuIcon.classList.add('fa-bars');
+const links = document.querySelectorAll('.nav-links a');
+if (links && navLinks && mobileMenuIcon) {
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuIcon.classList.remove('fa-times');
+            mobileMenuIcon.classList.add('fa-bars');
+        });
     });
-});
+}
 
 // Sticky Header & Active Link Switching
 const header = document.querySelector('header');
@@ -32,30 +37,37 @@ const navItems = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
     // Header shadow
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     }
 
     // Active link highlighting
     let current = '';
     
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
+    if (sections) {
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+    }
     
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').substring(1) === current) {
-            item.classList.add('active');
-        }
-    });
+    if (navItems) {
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            const href = item.getAttribute('href');
+            if (href && href.startsWith('#') && href.substring(1) === current) {
+                item.classList.add('active');
+            }
+        });
+    }
 });
 
 // Reveal Animations on Scroll
