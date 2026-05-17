@@ -16,10 +16,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
+    <!-- Particles Network Background -->
+    <div id="particles-js" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-2; pointer-events:none;"></div>
+
     <!-- Background Elements -->
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
@@ -28,7 +31,7 @@
     <!-- Navigation -->
     <header>
         <nav class="container">
-            <a href="#" class="logo">Antony<span>Jude.</span></a>
+            <a href="#" class="logo">Antony<span>Jude. R</span></a>
 
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
@@ -36,6 +39,11 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li>
+                    <button id="theme-toggle" class="btn-icon" style="background:transparent; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;" title="Toggle Hacker Mode">
+                        <i class="fas fa-terminal"></i>
+                    </button>
+                </li>
             </ul>
 
             <div class="mobile-menu-btn">
@@ -49,8 +57,10 @@
         <div class="container hero-content">
             <div class="hero-text">
                 <p class="greeting">Hello, I'm</p>
-                <h1>Antony Jude R</h1>
-                <h2 class="role">Aspiring Ethical Hacker & Developer</h2>
+                <h1 class="glitch-text" data-text="Antony Jude R">Antony Jude R</h1>
+                <h2 class="role"
+                    data-roles='["Aspiring Ethical Hacker", "Cyber Security Student", "Software Developer", "Tech Enthusiast", "Continuous Learner"]'>
+                    Aspiring Ethical Hacker</h2>
                 <p class="bio-short">Enthusiastic engineering student passionate about cybersecurity, ethical hacking,
                     and software development</p>
                 <div class="hero-actions">
@@ -58,14 +68,39 @@
                     <a href="#projects" class="btn btn-secondary">View Work</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/antony-jude" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/antony-jude" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="mailto:antonyjuder@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <div class="hero-image-container">
                 <div class="hero-image-glow"></div>
                 <img src="profile.JPG" alt="Antony Jude R" class="profile-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Terminal Section -->
+    <section id="terminal" class="terminal-section">
+        <div class="container">
+            <div class="terminal-window glass-panel reveal">
+                <div class="terminal-header">
+                    <span class="btn-close"></span>
+                    <span class="btn-minimize"></span>
+                    <span class="btn-expand"></span>
+                    <div class="terminal-title">root@antony-jude:~</div>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <p class="terminal-text"><span class="prompt">root@antony-jude:~$</span> <span class="typing-text">./welcome.sh</span></p>
+                    <p class="terminal-output mt-3">Welcome to the system. Type or click a command to proceed.</p>
+                    <div class="terminal-actions mt-4">
+                        <button class="terminal-cmd" data-cmd="whoami">&gt; whoami</button>
+                        <button class="terminal-cmd" data-cmd="cat skills.txt">&gt; cat skills.txt</button>
+                        <button class="terminal-cmd" data-cmd="netstat -an">&gt; netstat -an</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -165,6 +200,33 @@
                     <span class="tag">UI/UX</span>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Cyber Achievements -->
+    <section id="achievements" class="achievements">
+        <div class="container section-header">
+            <h2>Cyber <span class="highlight">Achievements</span></h2>
+        </div>
+        <div class="container badges-grid">
+            <a href="https://tryhackme.com/p/Antony..." class="badge-card glass-panel reveal" target="_blank" title="TryHackMe Profile">
+                <div class="badge-icon" style="color: #ffffff; background: #ea3a3e; padding: 10px; border-radius: 8px;">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <div class="badge-info">
+                    <h3>TryHackMe [0x5]</h3>
+                    <p>Rank: Top 25% | Rooms: 15</p>
+                </div>
+            </a>
+            <a href="https://profile.hackthebox.com/profile/019e351f-d17c-7398-87a3-7302dc2c6b58" class="badge-card glass-panel reveal" style="transition-delay: 0.1s;" target="_blank" title="HackTheBox Profile">
+                <div class="badge-icon" style="color: #9fef00; background: #111927; padding: 10px; border-radius: 8px; border: 1px solid #9fef00;">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="badge-info">
+                    <h3>HackTheBox [Lvl 5]</h3>
+                    <p>Rank: Beginner</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -288,8 +350,10 @@
             <div class="footer-bottom">
                 <div class="footer-logo">Antony<span>Jude.</span></div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/antony-jude" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/antony-jude-893473331/" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/antony-jude" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub"><i class="fab fa-github"></i></a>
                 </div>
                 <p class="copyright">&copy;
                     <script>document.write(new Date().getFullYear())</script> Antony Jude R. All Rights Reserved.
@@ -298,7 +362,10 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="script.js?v=6"></script>
 </body>
 
 </html>

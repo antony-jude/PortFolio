@@ -16,16 +16,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body class="contact-page">
     <!-- Background Elements -->
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor-glow" id="contact-cursor"></div>
 
     <!-- Navigation -->
     <header style="background: transparent; border: none; box-shadow: none;">
@@ -120,24 +117,8 @@
         </div>
     </section>
 
-    <script>
-        // Copy cursor logic for this page specifically since it's a separate file
-        const contactCursor = document.getElementById('contact-cursor');
-        document.addEventListener('mousemove', (e) => {
-            contactCursor.style.left = e.clientX + 'px';
-            contactCursor.style.top = e.clientY + 'px';
-        });
-        document.addEventListener('mousedown', () => {
-            contactCursor.style.width = '350px';
-            contactCursor.style.height = '350px';
-            contactCursor.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%)';
-        });
-        document.addEventListener('mouseup', () => {
-            contactCursor.style.width = '400px';
-            contactCursor.style.height = '400px';
-            contactCursor.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(0,0,0,0) 70%)';
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="script.js?v=6"></script>
 </body>
 
 </html>
