@@ -274,47 +274,212 @@ const terminalBody = document.getElementById('terminal-body');
 
 const responses = {
     'whoami': 'Antony Jude R - Aspiring Ethical Hacker & Software Developer.',
-    'cat skills.txt': 'Kali Linux, Git, VS Code, Networking, Malware Analysis, Python, C++, Web Dev.',
-    'netstat -an': 'Active Internet connections (servers and established)\nProto Recv-Q Send-Q Local Address           Foreign Address         State\ntcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN\ntcp        0      0 192.168.1.5:443         10.0.0.5:54321          ESTABLISHED'
+    'cat skills.txt': 'Languages: Python, C, Java, Dart\nTechnologies: Flutter, Node.js\nCybersecurity: Networking, Nmap, SIEM Basics, Ethical Hacking\nTools: Git, VS Code, VirtualBox',
+    'netstat -an': 'Active Internet connections (servers and established)\nProto Recv-Q Send-Q Local Address           Foreign Address         State\ntcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN\ntcp        0      0 192.168.1.5:443         10.0.0.5:54321          ESTABLISHED',
+    'help': 'Available commands:\n  whoami       - Display info about myself\n  cat skills   - Output my core technical skill matrix\n  netstat -an  - List active socket connections\n  matrix       - Stream matrix code rain screensaver (Press any key to exit)\n  clear        - Flush terminal buffer console logs',
+    'clear': 'CONSOLE_CLEARED'
 };
 
 if (terminalBody) {
     terminalBody.addEventListener('click', (e) => {
         if (e.target.classList.contains('terminal-cmd')) {
             const cmd = e.target.getAttribute('data-cmd');
-            const response = responses[cmd];
-            
-            // Find the actions container that was clicked and hide it
-            const actions = e.target.closest('.terminal-actions');
-            if (actions) actions.style.display = 'none';
-            
-            // Type the command
-            const cmdLine = document.createElement('p');
-            cmdLine.className = 'terminal-text mt-3';
-            cmdLine.innerHTML = `<span class="prompt">root@antony-jude:~$</span> <span class="typing">${cmd}</span>`;
-            terminalBody.appendChild(cmdLine);
-            
-            // Show response after a small delay
-            setTimeout(() => {
-                const resLine = document.createElement('p');
-                resLine.className = 'terminal-output mt-2';
-                resLine.style.whiteSpace = 'pre-wrap';
-                resLine.textContent = response;
-                terminalBody.appendChild(resLine);
-                
-                // Bring back a new actions container
-                setTimeout(() => {
-                    // Clone the FIRST original actions container to reset state
-                    const originalActions = document.querySelector('.terminal-actions');
-                    const newActions = originalActions.cloneNode(true);
-                    newActions.style.display = 'flex';
-                    terminalBody.appendChild(newActions);
-                    
-                    // Scroll terminal to bottom
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
-                }, 500);
-            }, 300);
+            executeTerminalCommand(cmd);
         }
     });
+
+    // Make the terminal keyboard interactive too!
+    // Append input line at bottom for advanced users
+    const inputLine = document.createElement('div');
+    inputLine.className = 'terminal-text mt-3';
+    inputLine.style.display = 'flex';
+    inputLine.style.alignItems = 'center';
+    inputLine.innerHTML = `<span class="prompt">root@antony-jude:~$</span><input type="text" id="terminal-keyboard-input" style="flex:1; background:transparent; border:none; outline:none; color:#27c93f; font-family:inherit; font-size:inherit; padding-left:5px;" placeholder="Type help..." autocomplete="off">`;
+    terminalBody.appendChild(inputLine);
+
+    const keyboardInput = document.getElementById('terminal-keyboard-input');
+    if (keyboardInput) {
+        keyboardInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                e.stopPropagation();
+                const cmd = keyboardInput.value.trim().toLowerCase();
+                if (cmd) {
+                    keyboardInput.value = '';
+                    executeTerminalCommand(cmd);
+                }
+            }
+        });
+    }
 }
 
+function executeTerminalCommand(cmd) {
+    if (!terminalBody) return;
+
+    // Handle clear
+    if (cmd === 'clear') {
+        // Reset terminal body content but keep keyboard input
+        const promptSpan = document.createElement('p');
+        promptSpan.className = 'terminal-output';
+        promptSpan.textContent = 'System log flushed. Ready for commands. Type "help" for info.';
+        
+        terminalBody.innerHTML = '';
+        terminalBody.appendChild(promptSpan);
+
+        const inputLine = document.createElement('div');
+        inputLine.className = 'terminal-text mt-3';
+        inputLine.style.display = 'flex';
+        inputLine.style.alignItems = 'center';
+        inputLine.innerHTML = `<span class="prompt">root@antony-jude:~$</span><input type="text" id="terminal-keyboard-input" style="flex:1; background:transparent; border:none; outline:none; color:#27c93f; font-family:inherit; font-size:inherit; padding-left:5px;" placeholder="Type help..." autocomplete="off">`;
+        terminalBody.appendChild(inputLine);
+
+        const keyboardInput = document.getElementById('terminal-keyboard-input');
+        if (keyboardInput) {
+            keyboardInput.addEventListener('keydown', (keyboardEvent) => {
+                if (keyboardEvent.key === 'Enter') {
+                    keyboardEvent.preventDefault();
+                    keyboardEvent.stopPropagation();
+                    const newCmd = keyboardInput.value.trim().toLowerCase();
+                    if (newCmd) {
+                        keyboardInput.value = '';
+                        executeTerminalCommand(newCmd);
+                    }
+                }
+            });
+        }
+        return;
+    }
+
+    // Handle matrix digital rain screensaver easter egg!
+    if (cmd === 'matrix') {
+        startMatrixScreensaver();
+        return;
+    }
+
+    let rawCmd = cmd;
+    // Map partial matches (e.g. "cat skills" to "cat skills.txt")
+    if (cmd === 'cat skills') cmd = 'cat skills.txt';
+
+    const response = responses[cmd] || `Command not found: "${rawCmd}". Type "help" for a list of available systems.`;
+
+    // Hide current interactive options
+    const actions = terminalBody.querySelector('.terminal-actions');
+    if (actions) actions.style.display = 'none';
+
+    // Type the command line
+    const cmdLine = document.createElement('p');
+    cmdLine.className = 'terminal-text mt-3';
+    cmdLine.innerHTML = `<span class="prompt">root@antony-jude:~$</span> <span>${rawCmd}</span>`;
+    
+    // Insert before the input line
+    const kInputLine = document.getElementById('terminal-keyboard-input')?.closest('.terminal-text');
+    if (kInputLine) {
+        terminalBody.insertBefore(cmdLine, kInputLine);
+    } else {
+        terminalBody.appendChild(cmdLine);
+    }
+
+    // Show response after a small delay
+    setTimeout(() => {
+        const resLine = document.createElement('p');
+        resLine.className = 'terminal-output mt-2';
+        resLine.style.whiteSpace = 'pre-wrap';
+        resLine.textContent = response;
+        
+        if (kInputLine) {
+            terminalBody.insertBefore(resLine, kInputLine);
+        } else {
+            terminalBody.appendChild(resLine);
+        }
+
+        // Show back the action buttons if we are not cleared
+        setTimeout(() => {
+            const originalActions = document.querySelector('.terminal-actions');
+            if (originalActions) {
+                const newActions = originalActions.cloneNode(true);
+                newActions.style.display = 'flex';
+                
+                if (kInputLine) {
+                    terminalBody.insertBefore(newActions, kInputLine);
+                } else {
+                    terminalBody.appendChild(newActions);
+                }
+            }
+            
+            // Scroll to bottom
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }, 300);
+    }, 200);
+}
+
+// Matrix screensaver execution inside terminal window container
+function startMatrixScreensaver() {
+    const terminalWindow = document.querySelector('.terminal-window');
+    if (!terminalWindow) return;
+
+    // Remove any existing matrix overlays
+    const oldCanvas = terminalWindow.querySelector('.matrix-canvas-overlay');
+    if (oldCanvas) oldCanvas.remove();
+
+    // Create canvas element
+    const canvas = document.createElement('canvas');
+    canvas.className = 'matrix-canvas-overlay';
+    terminalWindow.style.position = 'relative';
+    terminalWindow.appendChild(canvas);
+
+    // Set canvas sizes to match window body
+    const rect = terminalWindow.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height || 350;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコサシスセソタチツテト";
+    const charArr = chars.split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    // Initialize drops
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+
+    let matrixInterval = setInterval(() => {
+        // Semitransparent black background to fade previous characters
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Green matrix characters
+        ctx.fillStyle = "#00ff00"; 
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = charArr[Math.floor(Math.random() * charArr.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            // Reset drop to top if it reaches bottom (with randomized delay)
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }, 33);
+
+    // Clear screensaver when clicking or typing any key
+    function stopMatrix() {
+        clearInterval(matrixInterval);
+        canvas.remove();
+        document.removeEventListener('keydown', stopMatrix);
+    }
+
+    canvas.addEventListener('click', stopMatrix);
+    
+    // Register the keydown listener with a tiny delay to avoid catching the Enter keydown bubble
+    setTimeout(() => {
+        document.addEventListener('keydown', stopMatrix);
+    }, 100);
+}
+
+// -------------------------------------
